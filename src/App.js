@@ -8,11 +8,18 @@ import {nanoid} from "nanoid"
 import './App.css';
 
 export default function App() {
-    const [notes, setNotes] = React.useState([])
+    const [notes, setNotes] = React.useState(JSON.parse(localStorage.getItem("notes")) || [])
     const [currentNoteId, setCurrentNoteId] = React.useState(
         (notes[0] && notes[0].id) || ""
     )
     
+    // everytime the notes array changes, we have to set up a side effect.
+    // we add [notes] because we want this effect to run every time the notes array changes
+    React.useEffect(() => {
+        localStorage.setItem("notes", JSON.stringify(notes))
+    }, [notes])
+
+
     function createNewNote() {
         const newNote = {
             id: nanoid(),
