@@ -3,7 +3,7 @@ import ReactMde from "react-mde"
 import Showdown from "showdown"
 
 export default function Editor({ currentNote, updateNote }) {
-    const [selectedTab, setSelectedTab] = React.useState("write")
+    const [selectedTab, setSelectedTab] = React.useState("preview")
 
     const converter = new Showdown.Converter({
         tables: true,
@@ -11,6 +11,7 @@ export default function Editor({ currentNote, updateNote }) {
         strikethrough: true,
         tasklists: true,
     })  
+
 
     return (
         <section className="pane editor">
@@ -22,7 +23,7 @@ export default function Editor({ currentNote, updateNote }) {
                 generateMarkdownPreview={(markdown) =>
                     Promise.resolve(converter.makeHtml(markdown))
                 }
-                minEditorHeight={80}
+                minEditorHeight={100}
                 heightUnits="vh"
             />
         </section>

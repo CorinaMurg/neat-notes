@@ -3,12 +3,12 @@
 import React from "react"
 
 export default function Sidebar(props) {
-    const noteElements = props.notes.map((note, index) => (
+    const noteElements = props.notes.map((note) => (
         <div key={note.id}>
             <div
                 
                 className={`title ${
-                    note.id === props.currentNote.id ? "selected-note" : ""
+                    note.id === props.currentNoteId ? "selected-note" : ""
                 }`}
                 onClick={() => props.setCurrentNoteId(note.id)}
             >
