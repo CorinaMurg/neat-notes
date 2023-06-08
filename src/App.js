@@ -34,7 +34,7 @@ export default function App() {
         const dateCreated = new Date();
         const newNote = {
             id: nanoid(),
-            body: `# Note ${String.fromCharCode(65 + noteCount % 26)}\n\nCreated: ${dateCreated.toLocaleDateString()}`
+            body: `# Note ${String.fromCharCode(65 + noteCount % 26)}\n\nCreated: ${dateCreated.toLocaleString()}`
         }
 
         setNotes(prevNotes => [newNote, ...prevNotes]);
