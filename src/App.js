@@ -31,10 +31,12 @@ export default function App() {
     }, [notes, noteCount]);
     
     function createNewNote() {
+        const dateCreated = new Date();
         const newNote = {
             id: nanoid(),
-            body: `# Note ${String.fromCharCode(65 + noteCount % 26)}`
+            body: `# Note ${String.fromCharCode(65 + noteCount % 26)}\n\nCreated: ${dateCreated.toLocaleDateString()}`
         }
+
         setNotes(prevNotes => [newNote, ...prevNotes]);
         setCurrentNoteId(newNote.id);
         setNoteCount(prevCount => prevCount + 1);
@@ -56,9 +58,9 @@ export default function App() {
         })
     }
     
-    function deleteNote(event, noteId) {
+    function deleteNote(event, deletedNoteId) {
         event.stopPropagation()
-        setNotes(oldNotes => oldNotes.filter(note => note.id !== noteId))
+        setNotes(oldNotes => oldNotes.filter(note => note.id !== deletedNoteId))
     }
     
     
