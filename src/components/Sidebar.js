@@ -24,10 +24,17 @@ export default function Sidebar(props) {
     ))
 
     return (
-        <section className="pane sidebar">
+        <section className={`pane sidebar ${props.darkMode ? "dark": ""}`}>
+            <div className="toggler" >
+                <p className="toggler--light">Light</p>
+                
+                <div className="toggler--circle" onClick={props.toggleDarkMode}></div>
+                
+                <p className="toggler--dark">Dark</p>
+            </div>
             <div className="sidebar--header">
                 <h3>Quick Notes</h3>
-                <button className="new-note" onClick={props.newNote}>+</button>
+                <button className={`new-note ${!props.darkMode ? "light": ""}`} onClick={props.newNote}>+</button>
             </div>
             {noteElements}
         </section>

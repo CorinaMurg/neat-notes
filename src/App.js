@@ -63,6 +63,11 @@ export default function App() {
         setNotes(oldNotes => oldNotes.filter(note => note.id !== deletedNoteId))
     }
     
+    const [darkMode, setDarkMode] = React.useState(true)
+    
+    function toggleDarkMode() {
+        setDarkMode(prevMode => !prevMode)
+    }
     
     return (
         <main>
@@ -80,11 +85,14 @@ export default function App() {
                     setCurrentNoteId={setCurrentNoteId}
                     newNote={createNewNote}
                     deleteNote={deleteNote}
+                    darkMode = {darkMode}
+                    toggleDarkMode = {toggleDarkMode}
                 />
                 {
                     currentNoteId && 
                     notes.length > 0 &&
                     <Editor 
+                        darkMode = {darkMode}
                         current={currentNote} 
                         updated={updateNote} 
                     />
