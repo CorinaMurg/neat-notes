@@ -10,25 +10,34 @@ import './App.css';
 export default function App() {
     const [notes, setNotes] = React.useState(
         () => JSON.parse(localStorage.getItem("notes")) || []
-    )
+    );
 
     const [currentNoteId, setCurrentNoteId] = React.useState(
         (notes[0] && notes[0].id) || ""
-    )
+    );
+
+    const [noteCount, setNoteCount] = React.useState(
+        () => JSON.parse(localStorage.getItem("noteCount")) || 0
+    );
 
     const currentNote = notes.find(note => note.id === currentNoteId) || notes[0]
     
     React.useEffect(() => {
-        localStorage.setItem("notes", JSON.stringify(notes))
-    }, [notes])
+        localStorage.setItem("notes", JSON.stringify(notes));
+        localStorage.setItem("noteCount", JSON.stringify(noteCount));
+        if (notes.length === 0) {
+            setNoteCount(0);
+        }
+    }, [notes, noteCount]);
     
     function createNewNote() {
         const newNote = {
             id: nanoid(),
-            body: "# Type your markdown note's title here"
+            body: `# Note ${String.fromCharCode(65 + noteCount % 26)}`
         }
-        setNotes(prevNotes => [newNote, ...prevNotes])
-        setCurrentNoteId(newNote.id)
+        setNotes(prevNotes => [newNote, ...prevNotes]);
+        setCurrentNoteId(newNote.id);
+        setNoteCount(prevCount => prevCount + 1);
     }
     
     function updateNote(text) {
@@ -51,26 +60,7 @@ export default function App() {
         event.stopPropagation()
         setNotes(oldNotes => oldNotes.filter(note => note.id !== noteId))
     }
-
-
-        const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
-        
-        React.useEffect(() => {
-          // Function to handle window resize event
-          const handleResize = () => {
-            setWindowWidth(window.innerWidth);
-          };
-      
-          // Add event listener
-          window.addEventListener('resize', handleResize);
-          
-          // Remove event listener on cleanup
-          return () => {
-            window.removeEventListener('resize', handleResize);
-          };
-        }, []); // Empty array means this effect runs once on mount and cleanup on unmount
-        
-        const splitDirection = windowWidth <= 768 ? 'vertical' : 'horizontal';
+    
     
     return (
         <main>
@@ -79,7 +69,7 @@ export default function App() {
             ?
             <Split 
                 sizes={[30, 70]} 
-                direction={splitDirection}
+                direction="horizontal" 
                 className="split"
             >
                 <Sidebar
@@ -93,8 +83,8 @@ export default function App() {
                     currentNoteId && 
                     notes.length > 0 &&
                     <Editor 
-                        currentNote={currentNote} 
-                        updateNote={updateNote} 
+                        current={currentNote} 
+                        updated={updateNote} 
                     />
                 }
             </Split>
@@ -113,3 +103,5 @@ export default function App() {
         </main>
     )
 }
+
+
