@@ -77,7 +77,7 @@ export default function App() {
             <Split 
                 sizes={[30, 70]} 
                 direction="horizontal" 
-                className="split"
+                className={`split ${darkMode ? "dark": ""}`}
             >
                 <Sidebar
                     notes={notes}

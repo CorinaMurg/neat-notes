@@ -2,9 +2,14 @@
   box-sizing: border-box;
 }
 
+*:focus {
+  outline: 1.5px solid;
+}
 :root {
   --offwhite: #f9f4da;
   --coal: #0f0d0e;
+  --light-coal: #474747;
+  --very-light-coal: #7e7e7e;
   --yellow: #fcba28;
   --blue: #12b5e5;
 }
@@ -46,7 +51,8 @@ body {
 
 .sidebar {
   height: 80vh;
-  padding: 0.2rem;
+  padding: 0.3rem;
+  /* border-right: 1px solid var(--offwhite); */
 }
 
 .sidebar--header {
@@ -90,9 +96,13 @@ body {
   color: var(--coal);
 }
 
-.editor.dark {
-background-color: var(--coal);
-color: var(--offwhite);}
+.react-mde {
+  height: 80vh;
+}
+
+.mde-textarea-wrapper, .mde-preview, .mde-text {
+  height: 80vh !important;
+}
 
 .title {
   overflow: hidden;
@@ -124,6 +134,7 @@ color: var(--offwhite);}
 
 .selected-note {
   background-color: var(--coal);
+  border-radius: 3px;
 }
 
 .selected-note .text-snippet {
@@ -144,11 +155,10 @@ color: var(--offwhite);}
 }
 
 .gutter {
-  background-color: #231f20;
+  background-color: var(--light-coal);
   background-repeat: no-repeat;
   background-position: 50%;
 }
-
 
 .gutter.gutter-horizontal {
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==');
@@ -158,8 +168,13 @@ color: var(--offwhite);}
   cursor: col-resize;
 }
 
+.split.dark .gutter{
+  color: var(--offwhite)
+}
+
 .split {
   display: flex;
+  border-radius: 3px;
 }
 
 .no-notes {
@@ -271,13 +286,57 @@ color: var(--offwhite);}
   color: var(--coal)
 }
 
+.editor.dark .mde-textarea-wrapper, 
+.editor.dark .mde-header, 
+.editor.dark .mde-text {
+  background-color: var(--coal);
+  color: var(--offwhite);
+}
+
+.editor.dark .mde-tabs button {
+  color: var(--offwhite)
+}
+
+.editor.dark .mde-header svg {
+  color: var(--offwhite)
+}
+
+.react-mde {
+  border: none;
+}
+
+.mde-header {
+  border-bottom: 1px solid var(--coal);
+}
+
+.editor.dark .mde-header {
+  border-bottom: 1px solid var(--offwhite);
+}
+
+.mde-preview .mde-preview-content h1 {
+  border-bottom: 1px solid var(--coal);
+}
+
+.editor.dark .mde-preview .mde-preview-content h1 {
+  border-bottom: 1px solid var(--offwhite);
+}
+
+.mde-tabs {
+  display: flex;
+  flex-direction: row-reverse !important;
+}
 /* not working */
+::-webkit-scrollbar {
+  width: 10px;  /* for vertical scrollbars */
+  
+}
+
 ::-webkit-scrollbar-track {
-  background: #231f20; /* Color of the track (background) */
+  background: var(--light-coal); /* Color of the track (background) */
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--coal); /* Color of the scrollbar itself */
+  background: var(--very-light-coal); /* Color of the scrollbar itself */
 }
 
 
