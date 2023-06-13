@@ -5,6 +5,7 @@
 *:focus {
   outline: 1.5px solid;
 }
+
 :root {
   --offwhite: #f9f4da;
   --coal: #0f0d0e;
@@ -28,14 +29,15 @@ body {
   max-width: 50rem;
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
   scrollbar-color: var(--coal) #231f20;
+  background-color: var(--light-coal);
 }
 
 
-.ql-editor p,
+/* .ql-editor p,
 .ql-editor.ql-blank::before {
-  font-size: 1.3em;
-  font-weight: 100;
-}
+  font-size: 4em;
+  font-weight: 300;
+} */
 
 .pane {
   overflow-y: auto;
@@ -57,8 +59,9 @@ body {
 
 .sidebar--header {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+  margin: 0;
 }
 
 .sidebar--header > h3 {

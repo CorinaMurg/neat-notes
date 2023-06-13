@@ -12,6 +12,14 @@ export default function Editor({ current, updated, darkMode }) {
         tasklists: true,
     })  
 
+    React.useEffect(() => {
+        setTimeout(() => {
+            const buttons = document.querySelectorAll('.mde-header .mde-tabs button');
+            if (buttons && buttons[1]) {
+                buttons[1].textContent = 'View';
+            }
+        }, 0);
+    }, []); 
 
     return (
         <section className={`pane editor ${darkMode ? "dark": ""}`}>
