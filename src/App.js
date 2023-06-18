@@ -34,7 +34,7 @@ export default function App() {
         const dateCreated = new Date();
         const newNote = {
             id: nanoid(),
-            body: `# Note ${String.fromCharCode(65 + noteCount % 26)}\n\nCreated: ${dateCreated.toLocaleString()}`
+            body: `# Note ${String.fromCharCode(65 + noteCount % 26)}\n\nCreated: ${dateCreated.toLocaleString()}\n\n`
         }
 
         setNotes(prevNotes => [newNote, ...prevNotes]);
@@ -51,7 +51,7 @@ export default function App() {
                 if(oldNote.id === currentNoteId) {
                     newArray.unshift({ ...oldNote, body: text })
                 } else {
-                    newArray.push(oldNote)
+                    newArray.push(oldNote); 
                 }
             }
             return newArray

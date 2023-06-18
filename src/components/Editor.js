@@ -1,5 +1,6 @@
 import React from "react"
 import ReactMde from "react-mde"
+// convert markdown into html
 import Showdown from "showdown"
 
 export default function Editor({ current, updated, darkMode }) {
