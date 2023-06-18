@@ -33,7 +33,7 @@ export default function Sidebar(props) {
                 <p className="toggler--dark">Dark</p>
             </div>
             <div className="sidebar--header">
-                <h3>Easy Notes</h3>
+                <h3>Neat Notes</h3>
                 <button className={`new-note ${!props.darkMode ? "light": ""}`} onClick={props.newNote}>+</button>
             </div>
             {noteElements}
