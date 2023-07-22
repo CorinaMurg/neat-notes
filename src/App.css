@@ -32,13 +32,6 @@ body {
   background-color: var(--light-coal);
 }
 
-
-/* .ql-editor p,
-.ql-editor.ql-blank::before {
-  font-size: 4em;
-  font-weight: 300;
-} */
-
 .pane {
   overflow-y: auto;
   background-color: var(--offwhite);
