@@ -30,7 +30,7 @@ Here are the key technical aspects of the application:
 
 8. **Dark Mode**: I added a toggleable dark mode to enhance accessibility and user preference.
 
-9. **BEM Naming Convention**: With my latest projects, I like to follow the Block Element Modifier (BEM) naming convention for CSS classes because it promotes better readability and maintainability of the CSS code.
+9. **BEM Naming Convention**: With my latest projects I like to follow the Block Element Modifier (BEM) naming convention for CSS classes because it promotes better readability and maintainability of the CSS code.
 
 
 
